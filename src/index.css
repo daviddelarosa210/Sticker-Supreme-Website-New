@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 html, body {
@@ -19,7 +20,8 @@ html, body {
 
 /* header */
 #navbar{
-  background-color: white;
+  background-color:#242424;
+  
 }
 .ss-logo{
   height: 125px;
@@ -39,13 +41,16 @@ html, body {
 
 .nav-item-spacing{
   margin-right: 40px;
+  color: white !important; 
+  font-weight: 500;
 }
 
 /* Home */
 #title-section{
   width: 100%;
   height: 65vh;
-
+background-color: #242424;
+padding-top: 100px;
 }
 
 .title-line{
@@ -53,7 +58,8 @@ html, body {
   font-size: 60px;
   padding-left: 50px;
   margin-left: 125px;
-  margin-top: 100px;
+
+  color: white;
 }
 .title-btn{
   margin-left: 140px;
@@ -62,10 +68,14 @@ html, body {
 
 .pp-question{
   text-align: center;
+  color: white;
+  background-color: #242424;
 }
 
 .pp-answer{
   text-align: center;
+  color: white;
+  background-color: #242424;
 }
 
 #benefits-and-success{
@@ -74,7 +84,9 @@ html, body {
 }
 #pain-point{
   width: 100%;
-  height: 80vh;
+  height: 130vh;
+  background-color: #242424;
+  padding-top: 100px;
 }
 #benefits-and-success {
   display: flex;
@@ -96,7 +108,7 @@ html, body {
 @media (max-width: 768px) {
   #benefits-and-success {
       flex-direction: column; /* Stack items vertically on smaller screens */
-      padding-bottom: 1200px;
+      padding-bottom: 1000px;
   }
 }
 .benefit-pic{
@@ -120,9 +132,123 @@ html, body {
   max-width: 100%; /* Ensures the image doesn't overflow */
   margin-bottom: 15px; /* Adds space between the image and the text */
   justify-self: center; /* Centers the image horizontally */
-  height: 200px;
+  height: 100px;
 }
 .hiw-header{
   padding-bottom: 50px;
   padding-top: 200px;
+}
+.test-header{
+  text-align: center;
+  padding-top: 200px;
+}
+.benefits-header{
+  padding-top: 200px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+.tv-container{
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  background-color: #242424;
+  padding-bottom: 50px;
+}
+
+.tv{
+  width: 70%;
+}
+.tv-top{
+width: 75%;
+position: absolute;
+
+}
+/*Products*/
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px; /* Spacing between cards */
+  margin: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+      grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+}
+
+/* Businesses */
+/* Cart */
+/* Background overlay */
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Darken the background */
+  backdrop-filter: blur(5px); /* Blur effect */
+  z-index: 999; /* Layer it under the cart sidebar */
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 500px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  z-index: 1000; /* Above overlay */
+  padding: 20px;
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.close-cart-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
