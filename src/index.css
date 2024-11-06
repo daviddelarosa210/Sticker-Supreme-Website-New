@@ -1,243 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&family=Yellowtail&display=swap');
+
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
+  background-color: #3b3b3b;
+  
 }
 
 #root {
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: #3b3b3b;
+  padding-top: 110px; /* Push content down to avoid overlap with header */
 }
 
-/* header */
-#navbar{
-  background-color:#242424;
-  
+/* Header */
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999; /* Keep it above content but below the overlay */
+  background-color: rgba(59, 59, 59, 0.8); /* Slight transparency */
+  backdrop-filter: blur(8px); /* Apply blur effect */
 }
-.ss-logo{
-  height: 125px;
+.ss-logo {
+  height: 90px; /* Decrease logo height for a thinner appearance */
+  margin-left: 10px;
 }
 
-.menu-items{
+.menu-items, .sign {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa;
-}
-.sign{
-  display: flex;
-
-  background-color: #f8f9fa;
+  background-color: #3b3b3b;
 }
 
-.nav-item-spacing{
+.nav-item-spacing {
   margin-right: 40px;
-  color: white !important; 
-  font-weight: 500;
+  color: #fefcf9 !important;
+  font-weight:lighter;
+  font-family: 'Lato', sans-serif; /* General font for other words */
+}
+.sign-up-btn {
+  margin-right: 40px;
 }
 
-/* Home */
-#title-section{
+
+
+/* Home Section */
+#title-section {
   width: 100%;
-  height: 65vh;
-background-color: #242424;
-padding-top: 100px;
+  height: 80vh;
+  background-color: #3b3b3b;
+  padding-top: 150px;
 }
 
-.title-line{
-  font-weight: bold;
-  font-size: 60px;
+.title-line {
+  font-size: 70px;
   padding-left: 50px;
-  margin-left: 125px;
+  margin-left: 120px;
+  color: #fefcf9;
 
-  color: white;
-}
-.title-btn{
-  margin-left: 140px;
-  margin-top: 80px;
 }
 
-.pp-question{
-  text-align: center;
-  color: white;
-  background-color: #242424;
+.title-line {
+  font-family: 'Lato', sans-serif; /* General font for other words */
 }
 
-.pp-answer{
-  text-align: center;
-  color: white;
-  background-color: #242424;
+.stickers-font {
+  font-family: 'Lato', sans-serif; /* General font for other words */
+  font-weight: bold;
+  font-style: italic;
 }
 
-#benefits-and-success{
+.supreme-font {
+  font-family: 'Lato', sans-serif; /* General font for other words */
+  font-weight: bold;
+  font-style: italic;
+}
+
+.title-btn {
+  margin: 80px 0 0 140px;
+}
+
+/* Pain Point and Benefits */
+#pain-point {
   width: 100%;
-  height: 40vh;
+  height: 95vh;
+  background-color: #3b3b3b;
+  padding-top: 60px;
+  font-family: 'Lato', sans-serif;
+  display: flex; /* Make the container a flex container */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
 }
-#pain-point{
-  width: 100%;
-  height: 130vh;
-  background-color: #242424;
-  padding-top: 100px;
+
+.collage {
+  width: 60%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
+
+
 #benefits-and-success {
   display: flex;
-  justify-content: space-between; /* Adjusts spacing between items */
-  margin: 20px 0; /* Optional margin for spacing */
+  justify-content: space-between;
+  margin: 20px 0;
+  padding-top: 20px;
+
 }
 
 .benefit {
-  flex: 1; /* Allows each benefit to take up equal space */
-  padding: 10px; /* Optional padding for better spacing */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for a modern look */
-  border-radius: 5px; /* Optional rounded corners */
-  background-color: #f9f9f9; /* Optional background color */
-  margin: 0 10px; /* Optional margin between benefits */
+  flex: 1;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-color: #fefcf9;
   text-align: center;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: 0 50px;
 }
-@media (max-width: 768px) {
-  #benefits-and-success {
-      flex-direction: column; /* Stack items vertically on smaller screens */
-      padding-bottom: 1000px;
-  }
-}
-.benefit-pic{
+
+.benefit-pic {
   height: 200px;
   margin-bottom: 25px;
 }
-#how-it-works {
-  display: grid;
-  justify-content: center; /* Centers the entire grid */
-  text-align: center;
-  margin-top: 50px; /* Optional: Adjust the top margin */
+.benefit-text{
+  font-weight: bold;
 }
 
-.step {
+.pp-question, .pp-answer {
+  text-align: center;
+  color: #fefcf9;
+  background-color: #3b3b3b;
+  font-weight: bold;
+}
+
+/* Responsive Layouts */
+@media (max-width: 768px) {
+  #benefits-and-success {
+    flex-direction: column;
+    padding-bottom: 1000px;
+  }
+}
+
+/* How It Works */
+#how-it-works {
   display: grid;
-  justify-items: center; /* Centers content horizontally inside each grid cell */
-  margin: 20px; /* Space around each step */
+  justify-content: center;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.step-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-card {
+  background-color: #fefcf9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 350px;
+  text-align: center;
 }
 
 .hiw-pic {
-  max-width: 100%; /* Ensures the image doesn't overflow */
-  margin-bottom: 15px; /* Adds space between the image and the text */
-  justify-self: center; /* Centers the image horizontally */
+  width: 100px;
   height: 100px;
+  margin-bottom: 15px;
 }
-.hiw-header{
-  padding-bottom: 50px;
-  padding-top: 200px;
+
+.divider {
+  border-left: 2px solid #fefcf9;
+  height: 100px;
+  margin: 10px 0 0;
 }
-.test-header{
+
+/* Headers */
+.hiw-header, .test-header, .benefits-header {
   text-align: center;
-  padding-top: 200px;
+  color: #fefcf9;
+  font-family: 'Lato', sans-serif; /* General font for other words */
+  font-weight: bold;
 }
-.benefits-header{
-  padding-top: 200px;
-  text-align: center;
+
+.hiw-header {
+  margin: 200px 0 30px;
   padding-bottom: 50px;
 }
-.tv-container{
+
+.benefits-header {
+  padding: 100px 0 50px;
+}
+
+.test-header {
+  padding-top: 200px;
+}
+
+/* Carousel/TV Section */
+.tv-container {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
-  background-color: #242424;
-  padding-bottom: 50px;
-}
-
-.tv{
-  width: 70%;
+  padding: 50px 0 10px;
+  background-color: #3b3b3b;
 }
 .tv-top{
-width: 75%;
-position: absolute;
-
+  width: 1100px;
 }
-/*Products*/
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  gap: 20px; /* Spacing between cards */
-  margin: 20px;
+.tv {
+  width: 70%;
 }
 
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-  background-color: #fff;
-  transition: transform 0.3s ease;
+/* Products */
+.materials-scroll {
+  display: flex;
+  overflow-x: scroll;
+  gap: 10px;
 }
 
-.card:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.card h3 {
-  margin-top: 10px;
-  font-size: 1.2rem;
-}
-
-.card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .grid-container {
-      grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .grid-container {
-      grid-template-columns: 1fr; /* 1 column on very small screens */
-  }
-}
-
-/* Businesses */
-/* Cart */
-/* Background overlay */
+/* Cart Sidebar */
 .background-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Darken the background */
-  backdrop-filter: blur(5px); /* Blur effect */
-  z-index: 999; /* Layer it under the cart sidebar */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 999;
 }
 
-/* Cart Sidebar */
 .cart-sidebar {
   position: fixed;
   top: 0;
   right: -100%;
   width: 500px;
   height: 100%;
-  background-color: white;
+  background-color: #fefcf9;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: right 0.3s ease;
-  z-index: 1000; /* Above overlay */
+  z-index: 1000;
   padding: 20px;
 }
 

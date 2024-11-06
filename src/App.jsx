@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Reorder from './components/Reorder';
+import Samples from './components/Samples';
 import Home from './components/Home';
 import Products from './components/Products';
 import Portfolio from './components/Portfolio';
@@ -32,6 +33,9 @@ function App() {
         <Header isLoggedIn={isLoggedIn} />
         
         <Switch>
+        <Route path="/samples">
+            <Samples />
+          </Route>
           <Route path="/products">
             <Products />
           </Route>

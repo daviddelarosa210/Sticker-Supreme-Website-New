@@ -1,40 +1,116 @@
-import React from "react";
+import React, { useState } from "react";
+
+// Sample data for materials, sizes, and quantities
+const materials = [
+    { name: "Vinyl", image: "path/to/vinyl-image.jpg" },
+    { name: "Holographic", image: "path/to/holographic-image.jpg" },
+    { name: "Clear", image: "path/to/clear-image.jpg" },
+    { name: "Glitter", image: "path/to/Glitter-image.jpg" },
+    { name: "Mirror", image: "path/to/mirror-image.jpg" },
+    { name: "Pixie Dust", image: "path/to/pixie-dust-image.jpg" },
+    { name: "Prismatic", image: "path/to/prismatic-image.jpg" },
+    { name: "Brushed Aluminum", image: "path/to/brushed-aluminum-image.jpg" },
+    { name: "Kraft Paper", image: "path/to/kraft-paper-image.jpg" },
+    { name: "Hi-Tack Vinyl", image: "hi-tack-vinyl-image.jpg" },
+    { name: "Glow-in-the-Dark", image: "path/to/glow-in-the-dark-image.jpg" },
+    { name: "Reflective", image: "path/to/reflective-image.jpg" },
+    { name: "Low Tack Vinyl", image: "path/to/low-tack-vinyl-image.jpg" },
+    // Add more materials as needed
+];
+
+const dieCutShapes = ["Counter Cut", "Square", "Circle", "Rounded Corners"];
+const dieCutSizes = ["2x1", "2x2", "3x2", "3x3", "4x3", "4x4", "5x2", "5x3", "8x4"];
+const quantities = [10, 50, 100, 500]; // Example quantities
 
 const Products = () => {
-    const stickers = [
-        { id: 1, name: "Sticker 1", img: "/stickers/sticker1.jpg" },
-        { id: 2, name: "Sticker 2", img: "/stickers/sticker2.jpg" },
-        { id: 3, name: "Sticker 3", img: "/stickers/sticker3.jpg" },
-        { id: 4, name: "Sticker 4", img: "/stickers/sticker4.jpg" },
-        { id: 5, name: "Sticker 5", img: "/stickers/sticker5.jpg" },
-        { id: 6, name: "Sticker 6", img: "/stickers/sticker6.jpg" },
-        { id: 7, name: "Sticker 7", img: "/stickers/sticker7.jpg" },
-        { id: 8, name: "Sticker 8", img: "/stickers/sticker8.jpg" },
-        { id: 9, name: "Sticker 9", img: "/stickers/sticker9.jpg" },
-        { id: 10, name: "Sticker 10", img: "/stickers/sticker10.jpg" },
-        { id: 11, name: "Sticker 11", img: "/stickers/sticker11.jpg" },
-        { id: 12, name: "Sticker 12", img: "/stickers/sticker12.jpg" },
-        { id: 13, name: "Sticker 13", img: "/stickers/sticker13.jpg" },
-        { id: 14, name: "Sticker 14", img: "/stickers/sticker14.jpg" },
-        { id: 15, name: "Sticker 15", img: "/stickers/sticker15.jpg" },
-        { id: 16, name: "Sticker 16", img: "/stickers/sticker16.jpg" },
-    ];
+    const [selectedType, setSelectedType] = useState("");
+    const [selectedShape, setSelectedShape] = useState("");
+    const [selectedMaterial, setSelectedMaterial] = useState("");
+    const [selectedFinish, setSelectedFinish] = useState("");
+    const [selectedSize, setSelectedSize] = useState("");
+    const [selectedQuantity, setSelectedQuantity] = useState("");
+
+    // Determine finish options based on selected type and material
+    let finishOptions = ["Matte", "Glossy"];
+    if (selectedType === "Die Cut Sticker") {
+        if (["Vinyl", "Holographic", "Clear"].includes(selectedMaterial)) {
+            finishOptions = ["Glossy", "Matte", "Cracked Ice"];
+        } else if (["Glitter", "Pixie Dust", "Prismatic", "Brushed Aluminum", "Glow-in-the-Dark", "Reflective"].includes(selectedMaterial)) {
+            finishOptions = ["Glossy"];
+        } else if (["Mirror", "Low Tack Vinyl"].includes(selectedMaterial)) {
+            finishOptions = ["Glossy", "Matte"];
+        } else if (["Kraft Paper"].includes(selectedMaterial)) {
+            finishOptions = ["Uncoated"];
+        } else if (["Hi-Tack Vinyl"].includes(selectedMaterial)) {
+            finishOptions = ["Glossy 12 mil"];
+        }
+    }
 
     return (
         <div>
             <section>
                 <h1>Custom Sticker Selection</h1>
                 <p>Choose from our selection of custom stickers</p>
-            </section>
-            <section className="grid-container">
-                {stickers.map((sticker) => (
-                    <div key={sticker.id} className="card">
-                        <a href={`/stickers/${sticker.id}`} className="card-link">
-                            <img src={sticker.img} alt={sticker.name} />
-                            <h3>{sticker.name}</h3>
-                        </a>
-                    </div>
-                ))}
+                
+                <label>Choose Sticker Type:</label>
+                <select onChange={(e) => setSelectedType(e.target.value)}>
+                    <option value="Die Cut Sticker">Die Cut Sticker</option>
+                    <option value="Sticker Sheet">Sticker Sheet</option>
+                    {/* Add more types as needed */}
+                </select>
+
+                {selectedType === "Sticker Sheet" ? (
+                    <>
+                        <label>Choose Shape:</label>
+                        <select onChange={(e) => setSelectedShape(e.target.value)}>
+                            <option value="Square">Square</option>
+                        </select>
+                    </>
+                ) : (
+                    <>
+                        <label>Choose Shape:</label>
+                        <select onChange={(e) => setSelectedShape(e.target.value)}>
+                            {dieCutShapes.map((shape, index) => (
+                                <option key={index} value={shape}>{shape}</option>
+                            ))}
+                        </select>
+                    </>
+                )}
+
+                <label>Choose Material:</label>
+                <div className="materials-scroll">
+                    {materials.map((material, index) => (
+                        <div 
+                            key={index} 
+                            className="material-option" 
+                            onClick={() => setSelectedMaterial(material.name)}
+                        >
+                            <img src={material.image} alt={material.name} />
+                            <p>{material.name}</p>
+                        </div>
+                    ))}
+                </div>
+
+                <label>Select Finish:</label>
+                <select onChange={(e) => setSelectedFinish(e.target.value)}>
+                    {finishOptions.map((finish, index) => (
+                        <option key={index} value={finish}>{finish}</option>
+                    ))}
+                </select>
+
+                <label>Choose Size:</label>
+                <select onChange={(e) => setSelectedSize(e.target.value)}>
+                    {dieCutSizes.map((size, index) => (
+                        <option key={index} value={size}>{size}</option>
+                    ))}
+                </select>
+
+                <label>Choose Quantity:</label>
+                <select onChange={(e) => setSelectedQuantity(e.target.value)}>
+                    {quantities.map((quantity, index) => (
+                        <option key={index} value={quantity}>{quantity}</option>
+                    ))}
+                </select>
             </section>
         </div>
     );
